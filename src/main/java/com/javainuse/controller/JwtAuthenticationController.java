@@ -32,6 +32,7 @@ private JwtUserDetailsService userDetailsService;
 public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 	
 	authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
+	//TODO: fetch data from database through user service 
 	final UserDetails userDetails = userDetailsService
 								.loadUserByUsername(authenticationRequest.getUsername());
 	final String token = jwtTokenUtil.generateToken(userDetails);
